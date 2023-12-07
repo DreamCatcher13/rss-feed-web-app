@@ -1,6 +1,6 @@
+<!DOCTYPE HTML>
 {% load static %}
 
-<!DOCTYPE HTML>
 <!--
 	Read Only by HTML5 UP
 	html5up.net | @ajlkn
@@ -43,13 +43,13 @@
 					<div id="main">
 
 						<!-- One -->
-						{% for i in '012'|make_list %}
+						{% for f in feeds %}
 							<section>
 								<div class="container">
 									<header class="major">
-										<h3>Just an incredibly simple responsive site {{i}}</h3>
+										<h3>Just an incredibly simple responsive site</h3>
 									</header>
-									<p>Faucibus sed lobortis aliquam lorem blandit. Lorem eu nunc metus col. Commodo id in arcu ante lorem ipsum sed accumsan erat praesent faucibus commodo ac mi lacus. Adipiscing mi ac commodo. Vis aliquet tortor ultricies non ante erat nunc integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum.</p>
+									<p>{{ f }}</p>
 								</div>
 							</section>
 						{% endfor %}
