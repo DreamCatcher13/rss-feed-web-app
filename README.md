@@ -1,5 +1,5 @@
-# rss-feed-web-app
+# rss-feed-app
 
-### Django web-application for having your favourite RSS feed posts in one place
+### Azure function app to get some RSS feed posts, chained with Logic App to email them
 
-P.S. **pet project**, don't expect something special
+P.S. **pet project**
