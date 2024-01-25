@@ -1,5 +1,6 @@
 import feedparser
 from datetime import date, timedelta, datetime
+import json
 
 URLS = [
     "https://azurecomcdn.azureedge.net/en-us/updates/feed/",
@@ -10,11 +11,24 @@ URLS = [
 
 class Post():
     def __init__(self, source, title, description, dt, link):
-        self. source = source
+        self.source = source
         self.title = title
         self.description = description
         self.dt = dt
         self.link = link
+
+    def __str__(self):
+        return f"{self.source}\n{self.dt} --  {self.title}"
+    
+    def toDict(self):
+        obj = {
+            'title': self.title,
+            'desc': self.description,
+            'date': self.dt,
+            'link': self.link
+        }
+        return obj
+
 
 
 def getFeeds(urls=URLS):
@@ -36,4 +50,16 @@ def getFeeds(urls=URLS):
     return latest
 
 ent = getFeeds()
-print(len(ent))
+
+general = {}
+for e in ent:
+    if e.source in general.keys():
+        general[e.source].append(e.toDict())
+    else:
+        general[e.source] = [e.toDict()]
+
+with open("news.json", 'w') as f:
+    json.dump(general, f, indent=4)
+
+body = json.dumps(general)
+print(body)
